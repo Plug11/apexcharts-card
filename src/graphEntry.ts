@@ -25,6 +25,8 @@ export default class GraphEntry {
 
   private _hass?: HomeAssistant;
 
+  private _parentCollection?: (GraphEntry | undefined)[];
+
   private _entityID: string;
 
   private _entityState?: HassEntity;
@@ -444,9 +446,10 @@ export default class GraphEntry {
         'end',
         'hass',
         'moment',
+        'series',
         `'use strict'; ${this._config.data_generator}`,
       );
-      data = await datafn(this._entityState, start, end, this._hass, moment);
+      data = await datafn(this._entityState, start, end, this._hass, moment, this._parentCollection);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       const funcTrimmed =

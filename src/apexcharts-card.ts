@@ -445,6 +445,7 @@ class ChartsCard extends LitElement {
               this._config?.span,
             );
             if (this._hass) graphEntry.hass = this._hass;
+            graphEntry._parentCollection = this._graphs;
             return graphEntry;
           }
           return undefined;
