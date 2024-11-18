@@ -25,7 +25,7 @@ export default class GraphEntry {
 
   private _hass?: HomeAssistant;
 
-  private _parentCollection?: (GraphEntry | undefined)[];
+  public _parentCollection?: (GraphEntry | undefined)[];
 
   private _entityID: string;
 
