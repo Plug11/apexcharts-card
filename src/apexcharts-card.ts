@@ -445,10 +445,14 @@ class ChartsCard extends LitElement {
               this._config?.span,
             );
             if (this._hass) graphEntry.hass = this._hass;
-            graphEntry._parentCollection = this._graphs;
             return graphEntry;
           }
           return undefined;
+        });
+        this._graphs.forEach(graphEntry => {
+          if (graphEntry) {
+            graphEntry._parentCollection = this._graphs;
+          }
         });
         this._config.series_in_graph = [];
         this._config.series_in_brush = [];
